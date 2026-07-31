@@ -300,7 +300,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hero-splatter--1 { top: 14%; right: 36%; width: 200px; height: 200px; opacity: 0.10; }
   .hero-splatter--2 { bottom: 6%; left: 4%; width: 140px; height: 140px; opacity: 0.10; }
 
-  .hero .container { position: relative; z-index: 3; max-width: 100%; padding-left: clamp(20px, 3vw, 56px); padding-right: clamp(20px, 3vw, 56px); margin: 0; }
+  .hero .container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1260px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 
   .hero-grid {
     display: grid;
@@ -1539,6 +1547,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .about-stats { grid-template-columns: 1fr; gap: 16px; }
     .area-list { columns: 1; }
     .container { padding: 0 18px; }
+    .hero .container { padding-left: 18px; padding-right: 18px; }
     .topbar-left, .topbar-right { gap: 14px; font-size: 11px; }
     header .btn-estimate { padding: 11px 15px; font-size: 10px; letter-spacing: 0.08em; }
   }
@@ -3005,7 +3014,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   // ---- Quote form: validation + GoHighLevel webhook ----
-  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/PLPBsRe3eTyNtlDLHpAV/webhook-trigger/60fd9c53-9011-414b-a5d8-40eb0af51c19';
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/XtbWzFS34OkNHlJNAeYi/webhook-trigger/fjf8Rgcl9NLBPhdOhE9j';
   const ERROR_IDS = ['err-city','err-service','err-name','err-phone','err-email','err-consent','err-submit'];
   const FIELD_IDS = ['loc-input','svc-input','name-input','phone-input','email-input'];
 
