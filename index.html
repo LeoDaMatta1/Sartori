@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PHK98TPR');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sartori Corporation | Premium Services on Cape Cod</title>
+<meta name="description" content="Sartori Corporation, Premium Painting and Cleaning services for Cape Cod, Martha's Vineyard, and Nantucket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #A8101F;
+    --red-lt: #C8132C;
+    --red-dk: #7C0B16;
+    --gold: #B89968;
+    --gold-lt: #D4B888;
+    --navy: #1F2347;
+    --navy-dk: #14172F;
+    --navy-darker: #0E1224;
+    --cream: #FAFAF7;
+    --paper: #F1EBDD;
+    --white: #FFFFFF;
+    --gray: #6B6358;
+    --ink: #1B1E38;        /* texto principal sobre fundo claro */
+    --ink-soft: #3C3F57;   /* texto secundário sobre fundo claro */
+    --gold-dk: #8A6B3A;    /* dourado escuro p/ acento legível no claro */
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    color: var(--ink);
+    background: var(--white); /* fallback claro enquanto as fotos carregam */
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ============ FUNDO: SLIDESHOW SUTIL + OVERLAY ============ */
+  .bg-slideshow { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+  .bg-slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transform-origin: center;
+    opacity: 0;
+    animation: bgFade 18s infinite;
+    will-change: opacity, transform;
+  }
+  /* 3 fotos: interior · exterior · limpeza (crossfade lento ~1.5s, ~5s cada) */
+  .bg-slide:nth-child(1) { background-image: url('painting/img/interior-1.jpg'); animation-delay: 0s; }
+  .bg-slide:nth-child(2) { background-image: url('painting/img/exterior-1.jpg'); animation-delay: 6s; }
+  .bg-slide:nth-child(3) { background-image: url('img/cleaning-1.jpg'); animation-delay: 12s; }
+  @keyframes bgFade {
+    0%     { opacity: 0; transform: scale(1.07); }
+    8.33%  { opacity: 1; }              /* fade-in ~1.5s */
+    33.33% { opacity: 1; }              /* segura visível */
+    41.66% { opacity: 0; transform: scale(1.0); } /* fade-out ~1.5s */
+    100%   { opacity: 0; transform: scale(1.0); }
+  }
+  /* Overlay BRANCO forte, fundo quase branco, fotos só como sombra sutil */
+  .bg-overlay {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(168,16,31,0.03) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(184,153,104,0.03) 0%, transparent 58%),
+      linear-gradient(180deg, rgba(255,255,255,0.84) 0%, rgba(255,255,255,0.88) 100%);
+  }
+  /* Acessibilidade: sem animação → 1 foto estática com overlay */
+  @media (prefers-reduced-motion: reduce) {
+    .bg-slide { animation: none; }
+    .bg-slide:nth-child(1) { opacity: 1; transform: none; }
+    .bg-slide:nth-child(2), .bg-slide:nth-child(3) { display: none; }
+  }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(14,18,36,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    color: var(--cream); padding: 11px 24px; font-size: 12px; letter-spacing: 0.04em;
+    z-index: 50; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    border-bottom: 1px solid rgba(184,153,104,0.12);
+  }
+  .topbar a, .topbar span { color: var(--cream); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color 0.25s; }
+  .topbar a:hover { color: var(--red-lt); }
+  .topbar-left, .topbar-right { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .topbar svg { width: 13px; height: 13px; }
+
+  /* ============ MAIN LAYOUT ============ */
+  .main-wrap {
+    height: 100vh;
+    min-height: 640px;
+    padding: 72px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  /* Logo central */
+  .brand {
+    text-align: center;
+    margin-bottom: 18px;
+    animation: fadeUp 0.9s ease backwards;
+    animation-delay: 0.1s;
+    flex-shrink: 0;
+  }
+  .brand img {
+    height: clamp(80px, 11vh, 120px);
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 6px 18px rgba(27,30,56,0.18));
+  }
+  .brand-divider {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 12px auto 0;
+    opacity: 0.7;
+  }
+
+  /* Headline */
+  .headline {
+    text-align: center;
+    max-width: 680px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.9s ease backwards;
+    animation-delay: 0.25s;
+    flex-shrink: 0;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6); /* leve halo claro sobre a textura */
+  }
+  .headline .eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+    opacity: 1;
+  }
+  .headline h1 {
+    font-size: clamp(24px, 3vw, 38px);
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .headline h1 .italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold-dk);
+  }
+  .headline p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+
+  /* ============ CARDS ============ */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    width: 100%;
+    max-width: 980px;
+    flex: 1;
+    min-height: 0;
+    max-height: 460px;
+  }
+  .card {
+    position: relative;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--cream);
+    border: 1px solid rgba(184,153,104,0.22);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+    animation: fadeUp 0.9s ease backwards;
+    animation-delay: 0.45s;
+    display: block;
+  }
+  .card:nth-child(2) { animation-delay: 0.6s; }
+
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: var(--red);
+    box-shadow: 0 28px 80px rgba(168,16,31,0.35), 0 0 0 1px rgba(168,16,31,0.4);
+  }
+
+  /* Slideshow de fotos dentro do card */
+  .card-bg-slideshow { position: absolute; inset: 0; z-index: 1; }
+  .card-bg-slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    animation: slideshow 9s infinite;
+    transition: transform 8s ease;
+  }
+  .card-bg-slide:nth-child(2) { animation-delay: 3s; }
+  .card-bg-slide:nth-child(3) { animation-delay: 6s; }
+  @keyframes slideshow {
+    0%   { opacity: 0; transform: scale(1.06); }
+    8%   { opacity: 1; }
+    33%  { opacity: 1; transform: scale(1.0); }
+    41%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* Fotos reais dos cards */
+  .card.painting .card-bg-slide:nth-child(1) { background-image: url('img/painting-1.jpg'); background-size: cover; background-position: center; }
+  .card.painting .card-bg-slide:nth-child(2) { background-image: url('img/painting-2.jpg'); background-size: cover; background-position: center; }
+  .card.painting .card-bg-slide:nth-child(3) { background-image: url('img/painting-3.jpg'); background-size: cover; background-position: center; }
+  .card.cleaning .card-bg-slide:nth-child(1) { background-image: url('img/cleaning-1.jpg'); background-size: cover; background-position: center; }
+  .card.cleaning .card-bg-slide:nth-child(2) { background-image: url('img/cleaning-2.jpg'); background-size: cover; background-position: center; }
+  .card.cleaning .card-bg-slide:nth-child(3) { background-image: url('img/cleaning-3.jpg'); background-size: cover; background-position: center; }
+
+  /* Overlay escuro pra legibilidade do texto */
+  .card-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(180deg, rgba(14,18,36,0.35) 0%, rgba(14,18,36,0.75) 60%, rgba(14,18,36,0.92) 100%);
+    transition: background 0.5s;
+  }
+  .card:hover .card-overlay {
+    background: linear-gradient(180deg, rgba(14,18,36,0.25) 0%, rgba(14,18,36,0.65) 60%, rgba(168,16,31,0.55) 100%);
+  }
+
+  /* Conteúdo do card */
+  .card-content {
+    position: absolute; inset: 0; z-index: 3;
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-lt);
+    opacity: 0.85;
+  }
+  .card-number {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: rgba(250,250,247,0.4);
+    font-weight: 600;
+  }
+  .card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .card h2 {
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 0.95;
+    color: var(--cream);
+    margin-bottom: 0;
+  }
+  .card h2 .italic {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.5em;
+    color: var(--gold-lt);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .card-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(250,250,247,0.75);
+    font-weight: 300;
+    max-width: 360px;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--red);
+    color: var(--cream);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    width: fit-content;
+    margin-top: 4px;
+    box-shadow: 0 8px 24px rgba(168,16,31,0.4);
+  }
+  .card-cta svg { width: 14px; height: 14px; transition: transform 0.4s; }
+  .card:hover .card-cta {
+    background: var(--cream);
+    color: var(--navy-dk);
+    box-shadow: 0 12px 32px rgba(250,250,247,0.25);
+  }
+  .card:hover .card-cta svg { transform: translateX(4px); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    html, body { height: auto; min-height: 100vh; overflow-x: hidden; }
+    body { overflow-y: auto; }
+    .topbar { font-size: 11px; padding: 9px 16px; gap: 8px; }
+    .topbar-left, .topbar-right { gap: 14px; }
+    .main-wrap {
+      height: auto;
+      min-height: 100vh;
+      padding: 80px 20px 40px;
+      overflow: visible;
+    }
+    .brand img { height: 95px; }
+    .headline { margin-bottom: 32px; }
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: 460px;
+      max-height: none;
+      flex: none;
+    }
+    .card {
+      height: auto;
+      aspect-ratio: 5/4;
+    }
+    .card-content { padding: 24px 22px; }
+  }
+  @media (max-width: 600px) {
+    .topbar-right { display: none; }
+    .brand img { height: 80px; }
+    .headline h1 { font-size: 24px; }
+    .headline p { font-size: 15px; }
+    .card { aspect-ratio: 4/3; }
+    .card-content { padding: 20px 18px; }
+    .card h2 { font-size: 28px; }
+    .card-desc { font-size: 12px; }
+  }
+  /* Telas baixas (laptops 768px-altura ou menos) */
+  @media (max-height: 720px) and (min-width: 901px) {
+    .main-wrap { padding: 60px 32px 24px; }
+    .brand img { height: 80px; }
+    .brand { margin-bottom: 12px; }
+    .brand-divider { margin-top: 8px; }
+    .headline { margin-bottom: 20px; }
+    .headline h1 { font-size: 26px; }
+    .headline p { font-size: 14px; }
+    .cards { max-height: 380px; gap: 18px; }
+    .card-content { padding: 22px 24px; }
+    .card h2 { font-size: 30px; }
+    .card-desc { font-size: 12px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHK98TPR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- Fundo: slideshow sutil de fotos dos serviços + overlay -->
+  <div class="bg-slideshow" aria-hidden="true">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+  </div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="tel:5082463038"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (508) 246-3038</a>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Cape Cod · Martha's Vineyard · Nantucket</span>
+    </div>
+    <div class="topbar-right">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Mon–Sat · 7AM–6PM</span>
+    </div>
+  </div>
+
+  <main class="main-wrap">
+
+    <div class="brand">
+      <img src="assets/sartori-logo.png" alt="Sartori Corporation">
+      <div class="brand-divider"></div>
+    </div>
+
+    <div class="headline">
+      <div class="eyebrow">Cape Cod's Finest, Since 2013</div>
+      <h1>Two crafts. <span class="italic">One uncompromising standard.</span></h1>
+      <p>Get to know our two main branches of service and choose the one that best fits your needs.</p>
+    </div>
+
+    <div class="cards">
+
+      <a href="painting/index.html" class="card painting">
+        <div class="card-bg-slideshow">
+          <!-- TROCAR background dos .card-bg-slide pelas fotos reais (Cursor):
+               .card-bg-slide:nth-child(1) { background-image: url('img/painting-1.jpg'); } -->
+          <div class="card-bg-slide"></div>
+          <div class="card-bg-slide"></div>
+          <div class="card-bg-slide"></div>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-eyebrow">Branch 01</div>
+            <div class="card-number">/01</div>
+          </div>
+          <div class="card-bottom">
+            <h2>Painting <span class="italic">Services</span></h2>
+            <p class="card-desc">Interior, exterior, cabinets, and doors &amp; windows, for Cape Cod's finest homes.</p>
+            <span class="card-cta">
+              Enter Painting
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="cleaning/index.html" class="card cleaning">
+        <div class="card-bg-slideshow">
+          <div class="card-bg-slide"></div>
+          <div class="card-bg-slide"></div>
+          <div class="card-bg-slide"></div>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-eyebrow">Branch 02</div>
+            <div class="card-number">/02</div>
+          </div>
+          <div class="card-bottom">
+            <h2>Cleaning <span class="italic">Services</span></h2>
+            <p class="card-desc">Recurring cleaning, deep cleaning, and vacation rental turnovers, meticulous care for premium homes.</p>
+            <span class="card-cta">
+              Enter Cleaning
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+</body>
+</html>
