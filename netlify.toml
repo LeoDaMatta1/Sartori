@@ -1,0 +1,16 @@
+# Host normalization (SEO master prompt §6.1.8).
+# Every canonical tag, JSON-LD "url", and the sitemap on this site already use
+# the apex domain with no www. This redirect makes that the enforced default
+# instead of an assumption, so www never serves duplicate content.
+[[redirects]]
+  from = "https://www.sartoricorporationusa.com/*"
+  to = "https://sartoricorporationusa.com/:splat"
+  status = 301
+  force = true
+
+# Clean URL for the credentials page (optional — the page also works at
+# /licenses-insurance.html directly, which is what every on-site link uses).
+[[redirects]]
+  from = "/licenses-insurance"
+  to = "/licenses-insurance.html"
+  status = 200

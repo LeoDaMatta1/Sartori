@@ -1303,6 +1303,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .about-stat-label { font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; color: var(--gray); font-weight: 500; }
 
   /* ============ SERVICE AREAS (NEW) ============ */
+  /* ============ CREDENTIALS ============ */
+  .credentials-section { background: var(--cream); padding: 110px 0; }
+  .credentials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 50px; }
+  .credential-card {
+    background: var(--paper);
+    padding: 36px 28px;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .credential-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .credential-card:hover::before { transform: scaleX(1); }
+  .credential-card:hover { background: var(--white); transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.08); }
+  .credential-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(168,16,31,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.4s; }
+  .credential-card:hover .credential-icon { background: var(--red); transform: rotate(-8deg); }
+  .credential-icon svg { width: 20px; height: 20px; stroke: var(--red); transition: stroke 0.3s; }
+  .credential-card:hover .credential-icon svg { stroke: var(--cream); }
+  .credential-card h3 { font-size: 17px; margin-bottom: 10px; color: var(--ink); line-height: 1.25; font-weight: 700; }
+  .credential-card p { font-size: 13px; color: var(--gray); line-height: 1.65; font-weight: 300; }
+  .credential-card p strong { color: var(--ink); font-weight: 600; }
+  .credentials-cta { text-align: center; margin-top: 44px; }
+  .credentials-cta a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 30px; border: 1.5px solid var(--ink); border-radius: 40px;
+    font-family: 'Manrope', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none; transition: all 0.3s;
+  }
+  .credentials-cta a:hover { background: var(--ink); color: var(--cream); }
+  .credentials-cta svg { width: 14px; height: 14px; }
+  @media (max-width: 900px) { .credentials-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+  @media (max-width: 560px) { .credentials-grid { grid-template-columns: 1fr; } }
+
   /* ============ FAQ ============ */
   .faq-section { background: var(--cream); padding: 110px 0; }
   .faq-list { max-width: 860px; margin: 46px auto 0; }
@@ -1523,6 +1565,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .footer-bottom { border-top: 1px solid rgba(250,250,247,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13px; }
   .footer-bottom-text { color: rgba(250,250,247,0.4); }
   .footer-bottom-text em { font-family: 'Fraunces', serif; font-style: italic; }
+  .footer-credentials-line { display: inline-block; margin-top: 4px; font-size: 11.5px; color: rgba(250,250,247,0.32); letter-spacing: 0.01em; }
   .footer-social { display: flex; gap: 10px; }
   .footer-social a { width: 38px; height: 38px; border: 1px solid rgba(250,250,247,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(250,250,247,0.6); transition: all 0.3s; }
   .footer-social a:hover { background: var(--red); border-color: var(--red); color: var(--cream); transform: translateY(-2px); }
@@ -1733,6 +1776,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "https://www.google.com/maps?cid=13009860934834541671"
   ],
   "hasMap": "https://www.google.com/maps?cid=13009860934834541671",
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "license",
+    "name": "Massachusetts Home Improvement Contractor (HIC) Registration",
+    "identifier": "217650",
+    "recognizedBy": { "@type": "GovernmentOrganization", "name": "Commonwealth of Massachusetts" },
+    "validIn": { "@type": "AdministrativeArea", "name": "Massachusetts, USA" }
+  },
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Cape Cod, Massachusetts" },
     { "@type": "City", "name": "Barnstable, MA" },
@@ -1801,7 +1852,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Are you a licensed and insured painting contractor?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Sartori Corporation is a licensed and insured painting contractor, family-owned, BBB accredited, and painting homes on Cape Cod since 2013."
+        "text": "Yes. Sartori Corporation is a Massachusetts-registered Home Improvement Contractor (HIC #217650), fully insured, family-owned, BBB accredited, and painting homes on Cape Cod since 2013. See our full credentials."
       }
     },
     {
@@ -1849,7 +1900,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "How long does a painting project take?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It depends on the size of the project, the condition of the surfaces, and how much prep is required, and for exterior work, on the weather. A single room is a very different job from a whole-home repaint or a full cabinet refinishing. Your written estimate includes a specific timeline for your project before any work begins, and we tell you up front if weather may shift the schedule."
+        "text": "It depends on the size of the project, the condition of the surfaces, and how much prep is required, and for exterior work, on the weather. A single room is a very different job from a whole-home repaint or a full cabinet refinishing. The exact timeline is agreed with you when your estimate is finalized, and once it's set, we deliver on it, with weather-related exceptions flagged up front rather than discovered halfway through."
       }
     },
     {
@@ -2138,7 +2189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img class="marquee-logo logo--bm" src="assets/badges/benjamin-moore.png" alt="Benjamin Moore">
       <img class="marquee-logo logo--farrow" src="assets/badges/farrow-ball.png" alt="Farrow &amp; Ball">
       <img class="marquee-logo logo--fine" src="assets/badges/fine-paints.png" alt="Fine Paints of Europe">
-      <img class="marquee-logo logo--bbb" src="assets/badges/bbb.png" alt="BBB A+ Accredited">
+      <img class="marquee-logo logo--bbb" src="assets/badges/bbb.png" alt="BBB Accredited Business">
       <img class="marquee-logo logo--family" src="assets/badges/family-owned.png" alt="Family Owned">
       <img class="marquee-logo logo--google" src="assets/badges/five-star-google.png" alt="5.0 Google Verified Reviews">
       <!-- duplicata (aria-hidden) para o loop ser contínuo -->
@@ -2835,7 +2886,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false"><span>Are you a licensed and insured painting contractor?</span><span class="faq-icon"></span></button>
-        <div class="faq-a"><p>Yes. Sartori Corporation is a licensed and insured painting contractor, family-owned, BBB accredited, and painting homes on Cape Cod since 2013.</p></div>
+        <div class="faq-a"><p>Yes. Sartori Corporation is a Massachusetts-registered Home Improvement Contractor (HIC #217650), fully insured, family-owned, BBB accredited, and painting homes on Cape Cod since 2013. See our <a href="licenses-insurance.html">full credentials</a>.</p></div>
       </div>
 
       <div class="faq-item reveal">
@@ -2865,7 +2916,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false"><span>How long does a painting project take?</span><span class="faq-icon"></span></button>
-        <div class="faq-a"><p>It depends on the size of the project, the condition of the surfaces, and how much prep is required, and for exterior work, on the weather. A single room is a very different job from a whole-home repaint or a full cabinet refinishing. Your written estimate includes a specific timeline for your project before any work begins, and we tell you up front if weather may shift the schedule.</p></div>
+        <div class="faq-a"><p>It depends on the size of the project, the condition of the surfaces, and how much prep is required, and for exterior work, on the weather. A single room is a very different job from a whole-home repaint or a full cabinet refinishing. The exact timeline is agreed with you when your estimate is finalized, and once it's set, we deliver on it, with weather-related exceptions flagged up front rather than discovered halfway through.</p></div>
       </div>
 
       <div class="faq-item reveal">
@@ -2905,6 +2956,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <p class="faq-footer reveal">Still have a question about your project? <a href="tel:5082463038">Call (508) 246-3038</a> or <a href="#contact">request a free estimate</a>.</p>
+  </div>
+</section>
+
+<!-- ============ CREDENTIALS ============ -->
+<section class="credentials-section" id="credentials">
+  <div class="container">
+    <div class="section-title-block reveal">
+      <span class="section-eyebrow">Why Homeowners Trust Us</span>
+      <h2>Licensed. Insured. <span class="accent">Trusted.</span></h2>
+      <div class="brush-stroke"><svg viewBox="0 0 300 16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M5 8 Q40 2 80 6 T160 7 Q200 11 240 5 T295 7 L292 14 Q250 16 200 12 T120 13 Q70 10 30 14 T4 14 Z" fill="#A8101F"/></svg></div>
+      <p>Professional credentials that give you confidence from the first estimate to the final walkthrough.</p>
+    </div>
+
+    <div class="credentials-grid">
+      <div class="credential-card reveal">
+        <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Massachusetts HIC Registered</h3>
+        <p><strong>HIC #217650</strong><br>Valid through December 10, 2027</p>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M2 8h20"/></svg></div>
+        <h3>Fully Insured</h3>
+        <p>Commercial General Liability<br>Workers&rsquo; Compensation</p>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.3 2.3 4.7-4.7"/></svg></div>
+        <h3>BBB Accredited Business</h3>
+        <p>Accredited Since May 13, 2026</p>
+      </div>
+      <div class="credential-card reveal">
+        <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Professional Training</h3>
+        <p>Advanced Painting &amp; Finishing Training</p>
+      </div>
+    </div>
+
+    <div class="credentials-cta reveal">
+      <a href="licenses-insurance.html">View Our Credentials <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -3103,6 +3193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="licenses-insurance.html">Licenses &amp; Insurance</a></li>
           <li><a href="#contact">Free Estimate</a></li>
         </ul>
       </div>
@@ -3126,7 +3217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-text">© 2026 Sartori Corporation. <em>Family-owned &amp; operated. Serving Cape Cod since 2013.</em></div>
+      <div class="footer-bottom-text">© 2026 Sartori Corporation. <em>Family-owned &amp; operated. Serving Cape Cod since 2013.</em><br><span class="footer-credentials-line">MA HIC #217650 &middot; Fully Insured &middot; BBB Accredited Business</span></div>
       <div class="footer-social">
         <a class="footer-social--fb" href="https://www.facebook.com/sartori.corp" target="_blank" rel="noopener" aria-label="Sartori Corporation on Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         <a class="footer-social--ig" href="https://www.instagram.com/sartori.corporation/" target="_blank" rel="noopener" aria-label="Sartori Corporation on Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
