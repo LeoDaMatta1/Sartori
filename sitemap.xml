@@ -10,6 +10,38 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Blog -->
+  <url>
+    <loc>https://sartoricorporationusa.com/blog/index.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sartoricorporationusa.com/blog/best-painting-company-cape-cod.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sartoricorporationusa.com/blog/how-much-does-it-cost-to-paint-a-house-cape-cod.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sartoricorporationusa.com/blog/choosing-exterior-paint-cape-cod-salt-air.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sartoricorporationusa.com/blog/signs-time-to-repaint-exterior.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Trust / credentials -->
   <url>
     <loc>https://sartoricorporationusa.com/licenses-insurance.html</loc>

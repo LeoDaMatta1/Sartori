@@ -14,3 +14,30 @@
   from = "/licenses-insurance"
   to = "/licenses-insurance.html"
   status = 200
+
+# Clean URL for the blog (optional — every on-site link uses /blog/index.html
+# directly, so this isn't load-bearing).
+[[redirects]]
+  from = "/blog"
+  to = "/blog/index.html"
+  status = 200
+
+# Legacy URLs identified as returning live 404s (2026-08-20 report). These
+# paths do not correspond to any page this repo has ever contained, so they
+# predate this codebase — likely a prior site structure. Redirected to the
+# closest current equivalent instead of left as dead links, to recover any
+# residual link equity/traffic without inventing new dedicated pages for them.
+[[redirects]]
+  from = "/residential-painting/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/carpentry/*"
+  to = "/painting/exterior.html"
+  status = 301
+
+[[redirects]]
+  from = "/power-washing-services-in-orleans-ma/*"
+  to = "/painting/exterior.html"
+  status = 301
