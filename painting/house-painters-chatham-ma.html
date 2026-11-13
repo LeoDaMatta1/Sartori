@@ -1869,7 +1869,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const revealObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }); }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e){ const id=this.getAttribute('href'); if(id==='#')return; const t=document.querySelector(id); if(t){e.preventDefault(); t.scrollIntoView({behavior:'smooth'});} }); });
-  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/PLPBsRe3eTyNtlDLHpAV/webhook-trigger/60fd9c53-9011-414b-a5d8-40eb0af51c19';
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/XtbWzFS34OkNHlJNAeYi/webhook-trigger/fjf8Rgcl9NLBPhdOhE9j';
   (function() {
     const btn = document.getElementById('pc-submit'); if (!btn) return;
     const F = { name:document.getElementById('pc-name'), phone:document.getElementById('pc-phone'), email:document.getElementById('pc-email'), city:document.getElementById('pc-city'), service:document.getElementById('pc-service'), message:document.getElementById('pc-message'), consent:document.getElementById('pc-consent') };
